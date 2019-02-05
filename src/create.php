@@ -1,15 +1,8 @@
 <?php
 
-/**
- * Use an HTML form to create a new entry in the
- * users table.
- *
- */
-
-
 if (isset($_POST['submit'])) {
-	require "/config.php";
-	require "/common.php";
+	require "config.php";
+	require "common.php";
 
 	try {
 		$connection = new PDO($dsn, $username, $password, $options);
