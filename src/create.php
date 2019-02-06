@@ -5,7 +5,7 @@ if (isset($_POST['submit'])) {
 	require "common.php";
 
 	try {
-		$connection = new PDO($dsn, $username, $password, $options);
+		$connection = mysql_connect($host, $username, $password, $db);
 		
 		$new_user = array(
 			"firstname" => $_POST['firstname'],
@@ -24,9 +24,9 @@ if (isset($_POST['submit'])) {
 		
 		$statement = $connection->prepare($sql);
 		$statement->execute($new_user);
-	} catch(PDOException $error) {
-		echo $sql . "<br>" . $error->getMessage();
-	}
+	}# catch(PDOException $error) {
+	#	echo $sql . "<br>" . $error->getMessage();
+	#}
 	
 }
 ?>
