@@ -5,8 +5,11 @@ if (isset($_POST['submit'])) {
 	require "common.php";
 
 	try {
-		$connection = mysql_connect($host, $username, $password, $db);
-		
+		$connection = new mysqli($host, $username, $password);
+		if($connection->connect_error) {
+			die("Connection Failed:" . $connection->connect_error)
+		}
+		echo "Connected Successfully";
 		$new_user = array(
 			"firstname" => $_POST['firstname'],
 			"lastname"  => $_POST['lastname'],
